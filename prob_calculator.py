@@ -10,24 +10,29 @@ class Hat:
             while i < value:
                 self.contents.append(key)
                 i += 1
-        self.contents_copy = copy.deepcopy(self.contents)
                 
     def draw(self, num_balls) -> list:
         i = 0
         drawn_balls = []
             
+        if len(self.contents) <= num_balls:
+            return self.contents
+                
         while i < num_balls:
-            if len(self.contents) == 0:
-                self.contents = self.contents_copy
             random_ball = random.choice(self.contents)
             self.contents.remove(random_ball) 
             drawn_balls.append(random_ball)
             i += 1
         
+
         return drawn_balls
             
         
         
 
-def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    pass
+def experiment(hat, expected_balls, num_balls_drawn, num_experiments) -> float:
+    i = 0
+    while i < 5:
+        hat_copy = copy.deepcopy(hat)
+        print(hat_copy.draw(4))
+        i += 1
