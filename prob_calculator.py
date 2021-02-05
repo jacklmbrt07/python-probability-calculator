@@ -5,13 +5,12 @@ import random
 class Hat:
     def __init__(self, **kwargs) -> None:
         self.contents = []
-        self.contents_copy = []
         for key, value in kwargs.items():
             i = 0
             while i < value:
                 self.contents.append(key)
-                self.contents_copy.append(key)
                 i += 1
+        self.contents_copy = copy.deepcopy(self.contents)
                 
     def draw(self, num_balls) -> list:
         i = 0
